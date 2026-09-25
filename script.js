@@ -1,204 +1,116 @@
 let name = "";
 
+function startBirthday() {
 
-function startJourney() {
-
-    name =
-        document
-        .getElementById("nameInput")
-        .value
-        .trim();
-
+    name = document.getElementById("nameInput").value.trim();
 
     if (name === "") {
 
-        alert(
-            "Come on 😏 Enter your name first!"
-        );
+        alert("Please enter your name 😊");
 
         return;
     }
 
+    document.getElementById("namePage").style.display = "none";
 
-    document
-        .getElementById("namePage")
-        .classList.add("hidden");
-
-
-    document
-        .getElementById("loadingPage")
-        .classList.remove("hidden");
-
+    document.getElementById("loadingPage").style.display = "flex";
 
     setTimeout(function () {
 
-        document
-            .getElementById("loadingPage")
-            .classList.add("hidden");
+        document.getElementById("loadingPage").style.display = "none";
 
+        document.getElementById("birthdayPage").style.display = "flex";
 
-        document
-            .getElementById("promisePage")
-            .classList.remove("hidden");
+        document.getElementById("userName").innerHTML = name;
 
-
-        document
-            .getElementById("promiseName")
-            .textContent = name;
+        createBalloons();
 
     }, 2500);
 }
 
 
-
-function showQuiz() {
-
-    document
-        .getElementById("promisePage")
-        .classList.add("hidden");
-
-
-    document
-        .getElementById("quizPage")
-        .classList.remove("hidden");
-
-}
-
-
-
-function quizAnswer(answer) {
-
-    let result =
-        document.getElementById(
-            "quizResult"
-        );
-
-
-    if (answer === "me") {
-
-        result.innerHTML =
-            "Hmm... confident answer 😏";
-
-    }
-
-
-    else if (answer === "him") {
-
-        result.innerHTML =
-            "I knew you'd say that 😂";
-
-    }
-
-
-    else {
-
-        result.innerHTML =
-            "Okay fine... I'll accept that 😂❤️";
-
-    }
-
-
-    setTimeout(function () {
-
-        document
-            .getElementById("quizPage")
-            .classList.add("hidden");
-
-
-        document
-            .getElementById("giftPage")
-            .classList.remove("hidden");
-
-    }, 1800);
-}
-
-
-
 function openGift() {
 
-    document
-        .getElementById("giftPage")
-        .classList.add("hidden");
+    document.getElementById("birthdayPage").style.display = "none";
 
+    document.getElementById("surprisePage").style.display = "flex";
 
-    document
-        .getElementById("finalPage")
-        .classList.remove("hidden");
-
-
-    document
-        .getElementById("finalName")
-        .textContent = name;
-
+    document.getElementById("finalName").innerHTML = name;
 
     createConfetti();
-
 }
 
+
+function createBalloons() {
+
+    let balloons = ["🎈", "🎈", "🎈", "🎈", "🎈"];
+
+    balloons.forEach(function (balloon, index) {
+
+        let element = document.createElement("div");
+
+        element.className = "balloon";
+
+        element.innerHTML = balloon;
+
+        element.style.left = (index * 20 + 5) + "%";
+
+        element.style.animationDelay = (index * 0.8) + "s";
+
+        document.body.appendChild(element);
+
+    });
+}
 
 
 function createConfetti() {
 
     let symbols = [
-        "✨",
         "🎉",
         "🎊",
-        "❤️",
-        "🥂",
-        "⭐"
+        "✨",
+        "💖",
+        "🎈",
+        "⭐",
+        "🥳"
     ];
 
+    for (let i = 0; i < 40; i++) {
 
-    for (let i = 0; i < 60; i++) {
+        let confetti = document.createElement("div");
 
-        let piece =
-            document.createElement("div");
+        confetti.className = "confetti";
 
+        confetti.innerHTML =
+            symbols[Math.floor(Math.random() * symbols.length)];
 
-        piece.className =
-            "confetti";
-
-
-        piece.innerHTML =
-            symbols[
-                Math.floor(
-                    Math.random() *
-                    symbols.length
-                )
-            ];
-
-
-        piece.style.left =
+        confetti.style.left =
             Math.random() * 100 + "%";
 
-
-        piece.style.animationDelay =
+        confetti.style.animationDelay =
             Math.random() * 3 + "s";
 
-
-        document.body.appendChild(piece);
-
-
-        setTimeout(function () {
-
-            piece.remove();
-
-        }, 7000);
-
+        document.body.appendChild(confetti);
     }
-
 }
-
 
 
 function playMusic() {
 
-    let music =
-        document.getElementById(
-            "birthdayMusic"
-        );
+    let music = document.getElementById("birthdayMusic");
 
+    music.volume = 0.5;
 
-    music.play();
+    music.play()
+        .then(function () {
+
+            console.log("Music started");
+
+        })
+        .catch(function (error) {
+
+            console.log("Music could not start:", error);
+
+        });
 
 }
