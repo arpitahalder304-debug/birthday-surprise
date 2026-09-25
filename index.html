@@ -2,27 +2,42 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Birthday Surprise 🎂</title>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Something Special ❤️</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-    <!-- Name Page -->
 
-    <div class="page" id="namePage">
+    <!-- NAME PAGE -->
 
-        <div class="box">
+    <section class="page" id="namePage">
 
-            <h1>🎉 Hey You! 🎉</h1>
+        <div class="card">
 
-            <h2>Before we begin...</h2>
+            <p class="small-text">
+                A little something for you...
+            </p>
 
-            <p>What's your name? 👀</p>
+            <h1>
+                Before we begin...
+            </h1>
+
+            <p>
+                I need to know one thing.
+            </p>
+
+            <h2>
+                What's your name? 👀
+            </h2>
 
             <input
                 type="text"
@@ -30,56 +45,127 @@
                 placeholder="Enter your name"
             >
 
-            <br>
-
-            <button onclick="startBirthday()">
-                Continue 💖
+            <button onclick="startJourney()">
+                Continue
             </button>
 
         </div>
 
-    </div>
+    </section>
 
 
-    <!-- Loading Page -->
+    <!-- LOADING PAGE -->
 
-    <div class="page" id="loadingPage">
+    <section class="page hidden" id="loadingPage">
 
-        <div class="box">
+        <div class="card">
 
-            <h1>✨ Wait a second... ✨</h1>
+            <div class="loader"></div>
 
-            <h2>Preparing something special...</h2>
+            <h2>
+                Just a moment...
+            </h2>
 
-            <p>🎁 Getting the surprise ready...</p>
+            <p>
+                Preparing something special for you.
+            </p>
 
         </div>
 
-    </div>
+    </section>
 
 
-    <!-- Birthday Page -->
+    <!-- PROMISE PAGE -->
 
-    <div class="page" id="birthdayPage">
+    <section class="page hidden" id="promisePage">
 
-        <div class="box">
+        <div class="card">
+
+            <p class="small-text">
+                Hey, <span id="promiseName"></span>...
+            </p>
 
             <h1>
-                🎉 Happy Birthday
-                <span id="userName"></span>! 🎉
+                Before you continue ❤️
             </h1>
 
-            <h2>🥳 Today is YOUR day! 🥳</h2>
-
             <p>
-                I have something special prepared for you...
+                I need you to make me one little promise.
             </p>
 
             <p>
-                But first... 👀
+                Whatever happens next...
+                <br>
+                you have to smile. 😊
             </p>
 
-            <h2>🎁 Open Your Gift 🎁</h2>
+            <button onclick="showQuiz()">
+                I Promise 🤝
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUIZ PAGE -->
+
+    <section class="page hidden" id="quizPage">
+
+        <div class="card">
+
+            <p class="small-text">
+                Let's see how well you know us...
+            </p>
+
+            <h1>
+                One little question 😏
+            </h1>
+
+            <h2>
+                Who is more stubborn?
+            </h2>
+
+            <div class="options">
+
+                <button onclick="quizAnswer('me')">
+                    Obviously me 😌
+                </button>
+
+                <button onclick="quizAnswer('him')">
+                    Obviously you 😏
+                </button>
+
+                <button onclick="quizAnswer('both')">
+                    Both of us 😂
+                </button>
+
+            </div>
+
+            <p id="quizResult"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- GIFT PAGE -->
+
+    <section class="page hidden" id="giftPage">
+
+        <div class="card">
+
+            <p class="small-text">
+                Okay... you made it this far.
+            </p>
+
+            <h1>
+                I have something for you 🎁
+            </h1>
+
+            <p>
+                But you're going to have to open it yourself.
+            </p>
 
             <div
                 class="gift"
@@ -88,67 +174,74 @@
                 🎁
             </div>
 
-            <p>Click the gift! 👆</p>
+            <p>
+                Click the gift.
+            </p>
 
         </div>
 
-    </div>
+    </section>
 
 
-    <!-- Surprise Page -->
+    <!-- FINAL PAGE -->
 
-    <div class="page" id="surprisePage">
+    <section class="page hidden" id="finalPage">
 
-        <div class="box">
+        <div class="card final-card">
 
-            <h1>🎊 SURPRISE! 🎊</h1>
+            <p class="small-text">
+                And finally...
+            </p>
+
+            <h1>
+                🎉 Happy Birthday
+                <span id="finalName"></span>! 🎉
+            </h1>
 
             <div class="cake">
                 🎂
             </div>
 
-            <h1>
-                Happy Birthday
-                <span id="finalName"></span>! ❤️
-            </h1>
+            <h2>
+                Here's to 28! 🥂
+            </h2>
 
-            <p class="message">
+            <p class="final-message">
 
-                💖 May your life always be filled with
-                happiness, laughter and beautiful memories.
-
+                Another year of you.
+                <br>
+                Another year of memories.
+                <br>
+                Another year of reasons to smile.
                 <br><br>
 
-                🌟 May all your dreams come true.
-
-                <br><br>
-
-                🥳 May this new year of your life be
-                even more amazing than the last one!
-
-                <br><br>
-
-                🎁 Keep smiling, keep shining and
-                enjoy your special day!
+                I hope this year brings you
+                everything you've been wishing for.
+                ❤️
 
             </p>
 
-            <h2>
-                🎂🎈🎉 HAPPY BIRTHDAY! 🎉🎈🎂
+            <h2 class="love-text">
+                Happy Birthday ❤️
             </h2>
 
             <button onclick="playMusic()">
-                🎵 Play Birthday Music
+                🎵 Play Our Song
             </button>
 
         </div>
 
-    </div>
-    <audio id="birthdayMusic" loop>
-    <source src="shinchan_remix.mp3" type="audio/mpeg">
-</audio>
+    </section>
 
-<script src="script.js"></script>
+
+    <audio id="birthdayMusic" loop>
+
+        <source
+            src="music.mp3"
+            type="audio/mpeg"
+        >
+
+    </audio>
 
 
     <script src="script.js"></script>
@@ -156,4 +249,4 @@
 </body>
 
 </html>
-
+```
