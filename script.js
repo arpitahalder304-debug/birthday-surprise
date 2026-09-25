@@ -1,65 +1,22 @@
-let name = "";
+function nextStep(currentStep) {
 
-function startBirthday() {
+    document.getElementById("step" + currentStep).style.display = "none";
 
-    name = document.getElementById("nameInput").value.trim();
+    document.getElementById("step" + (currentStep + 1)).style.display = "flex";
 
-    if (name === "") {
-
-        alert("Please enter your name 😊");
-
-        return;
-    }
-
-    document.getElementById("namePage").style.display = "none";
-
-    document.getElementById("loadingPage").style.display = "flex";
-
-    setTimeout(function () {
-
-        document.getElementById("loadingPage").style.display = "none";
-
-        document.getElementById("birthdayPage").style.display = "flex";
-
-        document.getElementById("userName").innerHTML = name;
-
-        createBalloons();
-
-    }, 2500);
 }
 
 
 function openGift() {
 
-    document.getElementById("birthdayPage").style.display = "none";
+    document.getElementById("step4").style.display = "none";
 
-    document.getElementById("surprisePage").style.display = "flex";
-
-    document.getElementById("finalName").innerHTML = name;
+    document.getElementById("finalPage").style.display = "flex";
 
     createConfetti();
-}
 
+    createBalloons();
 
-function createBalloons() {
-
-    let balloons = ["🎈", "🎈", "🎈", "🎈", "🎈"];
-
-    balloons.forEach(function (balloon, index) {
-
-        let element = document.createElement("div");
-
-        element.className = "balloon";
-
-        element.innerHTML = balloon;
-
-        element.style.left = (index * 20 + 5) + "%";
-
-        element.style.animationDelay = (index * 0.8) + "s";
-
-        document.body.appendChild(element);
-
-    });
 }
 
 
@@ -72,10 +29,11 @@ function createConfetti() {
         "💖",
         "🎈",
         "⭐",
-        "🥳"
+        "🥳",
+        "🎂"
     ];
 
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 50; i++) {
 
         let confetti = document.createElement("div");
 
@@ -88,16 +46,53 @@ function createConfetti() {
             Math.random() * 100 + "%";
 
         confetti.style.animationDelay =
-            Math.random() * 3 + "s";
+            Math.random() * 4 + "s";
+
+        confetti.style.fontSize =
+            (18 + Math.random() * 18) + "px";
 
         document.body.appendChild(confetti);
+
     }
+
+}
+
+
+function createBalloons() {
+
+    let balloons = [
+        "🎈",
+        "🎈",
+        "🎈",
+        "🎈",
+        "🎈"
+    ];
+
+    balloons.forEach(function (balloon, index) {
+
+        let element = document.createElement("div");
+
+        element.className = "balloon";
+
+        element.innerHTML = balloon;
+
+        element.style.left =
+            (index * 20 + 5) + "%";
+
+        element.style.animationDelay =
+            (index * 0.8) + "s";
+
+        document.body.appendChild(element);
+
+    });
+
 }
 
 
 function playMusic() {
 
-    let music = document.getElementById("birthdayMusic");
+    let music =
+        document.getElementById("birthdayMusic");
 
     music.volume = 0.5;
 
@@ -109,7 +104,10 @@ function playMusic() {
         })
         .catch(function (error) {
 
-            console.log("Music could not start:", error);
+            console.log(
+                "Music could not start:",
+                error
+            );
 
         });
 
