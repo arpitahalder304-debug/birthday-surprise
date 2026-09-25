@@ -61,30 +61,6 @@ p {
     color: #d4d4d4;
 }
 
-input {
-    display: block;
-    width: 100%;
-    max-width: 400px;
-    margin: 20px auto 0;
-    padding: 15px 18px;
-    border: 1px solid rgba(245, 199, 107, 0.4);
-    border-radius: 12px;
-    outline: none;
-    background: rgba(255, 255, 255, 0.08);
-    color: white;
-    font-size: 16px;
-    text-align: center;
-}
-
-input::placeholder {
-    color: #aaaaaa;
-}
-
-input:focus {
-    border-color: #f5c76b;
-    box-shadow: 0 0 15px rgba(245, 199, 107, 0.2);
-}
-
 button {
     width: auto;
     min-width: 180px;
@@ -106,9 +82,10 @@ button:hover {
     box-shadow: 0 8px 25px rgba(245, 199, 107, 0.25);
 }
 
-#birthdayPage,
-#loadingPage,
-#surprisePage {
+#step2,
+#step3,
+#step4,
+#finalPage {
     display: none;
 }
 
@@ -142,12 +119,38 @@ button:hover {
 
 }
 
+.confetti {
+    position: fixed;
+    top: -50px;
+    font-size: 22px;
+    animation: fall 4s linear forwards;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+@keyframes fall {
+
+    0% {
+        top: -50px;
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        top: 110vh;
+        transform: rotate(360deg);
+        opacity: 0;
+    }
+
+}
+
 .balloon {
     position: fixed;
     bottom: -100px;
     font-size: 38px;
     animation: balloonUp 7s linear infinite;
     pointer-events: none;
+    z-index: 5;
 }
 
 @keyframes balloonUp {
@@ -166,13 +169,4 @@ button:hover {
         opacity: 0;
     }
 
-}
-
-.confetti {
-    position: fixed;
-    top: -20px;
-    font-size: 22px;
-    animation: fall 4s linear forwards;
-    pointer-events: none;
-    z-index: 1000;
 }
